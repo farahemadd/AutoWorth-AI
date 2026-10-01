@@ -50,7 +50,7 @@ st.title("🚗 AutoWorth AI")
 
 st.caption(
     "Used-car price estimator and deal advisor — "
-    "trained on 97,703 UK listings (test R² 0.972, MAE £1,023)"
+    "trained on 97,703 UK listings (test R² 0.972, MAE £1,020)"
 )
 
 
@@ -134,7 +134,8 @@ if st.button("Evaluate this deal", type="primary", use_container_width=True):
     m3.metric(
         "Difference",
         f"£{abs(diff):,.0f} {'more' if diff > 0 else 'cheaper'}",
-        f"{pct:+.1f}%"
+        f"{pct:+.1f}%",
+        delta_color="inverse"
     )
 
     st.markdown(
@@ -144,10 +145,10 @@ if st.button("Evaluate this deal", type="primary", use_container_width=True):
         unsafe_allow_html=True
     )
 
-    if abs(diff) < 1023:
+    if abs(diff) < 1020:
         st.warning(
             "This difference is within the model's typical error "
-            "(MAE £1,023), so it may not be a real bargain."
+            "(MAE £1,020), so it may not be a real bargain."
         )
 
     if est > 40000:
